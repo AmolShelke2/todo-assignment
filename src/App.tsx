@@ -78,24 +78,25 @@ function App() {
       <button onClick={onAddTask}>Add</button>
       <ul>
         {tasks.map((task) => (
-          <div key={task.id} className="task-card">
+          <li key={task.id} className="task-card" data-testid="task">
             {isEditing && editingTaskId === task.id ? (
               <div>
                 <input
                   type="text"
                   value={taskName}
                   onChange={(e) => setTaskName(e.target.value)}
+                  data-testid="Edit Task"
                 />
                 <button onClick={onSaveEdit}>Save</button>
               </div>
             ) : (
-              <li>{task.title}</li>
+              <p>{task.title}</p>
             )}
             <div className="option-btns">
               <button onClick={() => onDeleteTask(task.id)}>Delete</button>
               <button onClick={() => onEditTask(task.id)}>Edit</button>
             </div>
-          </div>
+          </li>
         ))}
       </ul>
     </div>
