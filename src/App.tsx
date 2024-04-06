@@ -75,7 +75,12 @@ function App() {
         value={isEditing ? '' : taskName}
         onChange={(e) => setTaskName(e.target.value)}
       />
-      <button onClick={onAddTask}>Add</button>
+      <button
+        onClick={onAddTask}
+        onKeyDown={(e) => (e.code === 'Enter' ? onAddTask() : null)}
+      >
+        Add
+      </button>
       <ul>
         {tasks.map((task) => (
           <li key={task.id} className="task-card" data-testid="task">
